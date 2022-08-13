@@ -37,6 +37,7 @@ contract LootBoxOpener is Ownable {
 
     function randMod(uint256 _modulus, uint256 salt)
     internal
+    pure
     returns (uint256)
     {
         return
@@ -57,7 +58,7 @@ contract LootBoxOpener is Ownable {
         emit SetGameNFT(tier, NFTGame);
     }
 
-    function arrayNotHaveNumber(uint256[] memory array, uint number) internal returns (bool){
+    function arrayNotHaveNumber(uint256[] memory array, uint number) internal pure returns (bool){
         for (uint i = 0; i < array.length; i++) {
             if (array[i] == number) {
                 return false;
