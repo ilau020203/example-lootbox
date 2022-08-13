@@ -37,7 +37,7 @@ contract LootBoxOpener is Ownable {
 
     function randMod(uint256 _modulus, uint256 salt)
     internal
-    pure
+    view
     returns (uint256)
     {
         return
