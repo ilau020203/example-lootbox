@@ -6,13 +6,19 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract NFTGame is ERC721, Ownable {
     string private uri;
+    string public description;
+    uint8 public rarity;
 
     constructor(
         string memory name_,
         string memory symbol_,
-        string memory uri_
+        string memory uri_,
+        string memory description_,
+        uint8 rarity_
     ) ERC721(name_, symbol_) {
-        uri=uri_;
+        uri = uri_;
+        description = description_;
+        rarity = rarity_;
     }
 
     function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
@@ -20,10 +26,11 @@ contract NFTGame is ERC721, Ownable {
         return _baseURI();
     }
 
-    
+
     function _baseURI() internal view virtual override returns (string memory) {
         return uri;
     }
+
     function mint(address to, uint256 tokenId) external onlyOwner {
         _safeMint(to, tokenId);
     }
